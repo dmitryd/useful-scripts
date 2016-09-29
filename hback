@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+
+import sys
+import socket
+
+if len(sys.argv) < 2:
+	print "Usage: hback hsystname"
+	exit(1)
+
+try:
+	address = socket.gethostbyname(sys.argv[1])
+except:
+	print "Cannot resolve %s" % (sys.argv[1])
+	exit(1)
+
+try:
+	print socket.gethostbyaddr(address)[0]
+except:
+	print "%s does not resolve to any other host." % (sys.argv[1])
+

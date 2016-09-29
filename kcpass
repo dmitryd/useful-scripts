@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ "$1" == "" ] ; then
+        echo "Usage: kcpass url"
+else
+        security find-internet-password -w -s "$1"
+fi

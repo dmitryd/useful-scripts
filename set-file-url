@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ ! -e "$2" ] ; then
+	echo "Format: `basename $0` url file"
+	echo ""
+	echo "Sets the source URL of the file."
+	echo ""
+	exit 1
+fi
+
+URL="$1"
+ENCODED_URL=`echo \(\'$URL\'\) | plutil -convert binary1 -o - - | xxd -p -c 16 -u`
+xattr -xw com.apple.metadata:kMDItemWhereFroms "$ENCODED_URL" "$2"

@@ -16,5 +16,5 @@ except:
 try:
 	print socket.gethostbyaddr(address)[0]
 except:
-	print "%s does not resolve to any other host." % (sys.argv[1])
+	print "%s (%s) does not resolve to any other host." % (sys.argv[1], address)
 

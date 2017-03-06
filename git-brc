@@ -1,0 +1,16 @@
+#!/bin/bash
+if [ "$1" == "--help" ]
+then
+	echo 'This script cleans the repository from local branches that no longer exist on any remote but still tracked there'
+	exit 1
+elif [ -e .git ]
+then
+	git fetch --all -p
+	for f in `git branch -r --merged origin/development | grep 'feature/' | sed 's/origin\///'` ; do git push origin :$f ; done
+	git br -vv | grep 'origin/' | grep ': gone]' | awk '{print $3;}' | tr -d '[:' | sed 's/origin\///' | xargs git branch -d 
+	git gc
+else
+	echo "Not a git repository!"
+	exit 1
+fi
+

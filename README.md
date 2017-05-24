@@ -1,6 +1,8 @@
 # Useful scripts
 
-This repository contains some of my useful scripts.
+This repository contains some of my useful scripts. 
+
+Linux/macOS, not Windows. Some scripts work only on some systems as described below.
 
 ## Listing
 
@@ -69,7 +71,7 @@ www.microsoft.com does not resolve to any other host.
 
 ### <a name="kcpass"></a>kcpass
 
-Shows a keychain password for the given URL in shell. Example:
+macOS only. Shows a keychain password for the given URL in shell. Example:
 
 ```sh
 $ kcpass test.dev
@@ -80,7 +82,7 @@ This may show a prompt from the keychain to allow access. Note that "Always allo
 
 ### <a name="set-file-url"></a>set-file-url
 
-Set a "Download from" field in macOS metadata. This is visible when you use `Get info` Finder menu on the file. Useful if you download the file with `wget` or alike and want to preserve the downloaed URL somewhere. Example:
+macOS only. Set a "Download from" field in macOS metadata. This is visible when you use `Get info` Finder menu on the file. Useful if you download the file with `wget` or alike and want to preserve the downloaed URL somewhere. Example:
 
 ```sh
 $ set-file-url 'https://www.whonix.org/download/13.0.0.1.1/Whonix-Workstation-13.0.0.1.1.ova' Whonix-Workstation-13.0.0.1.1.ova
@@ -88,7 +90,7 @@ $ set-file-url 'https://www.whonix.org/download/13.0.0.1.1/Whonix-Workstation-13
 
 ### <a name="sign-phpstorm"></a>sign-phpstorm
 
-This is a workaround for the [annoying PhpStorm bug](https://youtrack.jetbrains.com/issue/IDEA-129941), which makes macOS to prompt for network connection each time when you start PhpStorm. It just re-signs the binary to prevent the issue. Example:
+macOS only. This is a workaround for the [annoying PhpStorm bug](https://youtrack.jetbrains.com/issue/IDEA-129941), which makes macOS to prompt for network connection each time when you start PhpStorm. It just re-signs the binary to prevent the issue. Example:
 
 ```sh
 sign-phpstorm

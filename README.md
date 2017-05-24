@@ -80,7 +80,7 @@ This may show a prompt from the keychain to allow access. Note that "Always allo
 
 ### <a name="set-file-url"></a>set-file-url
 
-Set a "Download from" field in maxOS metadata. This is visible when you use `Get info` Finder menu on the file. useful if you download the file with `wget` or alike anbd want to preserver the downloaed URL somewhere. Example:
+Set a "Download from" field in macOS metadata. This is visible when you use `Get info` Finder menu on the file. useful if you download the file with `wget` or alike anbd want to preserver the downloaed URL somewhere. Example:
 
 ```sh
 $ set-file-url 'https://www.whonix.org/download/13.0.0.1.1/Whonix-Workstation-13.0.0.1.1.ova' Whonix-Workstation-13.0.0.1.1.ova

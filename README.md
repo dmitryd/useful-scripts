@@ -76,11 +76,11 @@ $ kcpass test.dev
 testpass
 ```
 
-This may show a prompt from the keychain to allow access. Note that "Always allow" can be clicjked but has no effect. If you use this often and dislike the prompt, select the item in the keychain app and set `Allow all applications to access the item` in item's `Access control` tab.
+This may show a prompt from the keychain to allow access. Note that "Always allow" can be clicked but has no effect. If you use this often and dislike the prompt, select the item in the keychain app and set `Allow all applications to access the item` in item's `Access control` tab.
 
 ### <a name="set-file-url"></a>set-file-url
 
-Set a "Download from" field in macOS metadata. This is visible when you use `Get info` Finder menu on the file. useful if you download the file with `wget` or alike anbd want to preserver the downloaed URL somewhere. Example:
+Set a "Download from" field in macOS metadata. This is visible when you use `Get info` Finder menu on the file. Useful if you download the file with `wget` or alike and want to preserve the downloaed URL somewhere. Example:
 
 ```sh
 $ set-file-url 'https://www.whonix.org/download/13.0.0.1.1/Whonix-Workstation-13.0.0.1.1.ova' Whonix-Workstation-13.0.0.1.1.ova
@@ -88,7 +88,7 @@ $ set-file-url 'https://www.whonix.org/download/13.0.0.1.1/Whonix-Workstation-13
 
 ### <a name="sign-phpstorm"></a>sign-phpstorm
 
-This is a workarounf for the [annoying PhpStorm bug](https://youtrack.jetbrains.com/issue/IDEA-129941), which makes macOS to prompt for network connection each time when you start PhpStorm. It just re-signs the binary to prevent the issue. Example:
+This is a workaround for the [annoying PhpStorm bug](https://youtrack.jetbrains.com/issue/IDEA-129941), which makes macOS to prompt for network connection each time when you start PhpStorm. It just re-signs the binary to prevent the issue. Example:
 
 ```sh
 sign-phpstorm

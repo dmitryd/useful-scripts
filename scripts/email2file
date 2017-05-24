@@ -2,21 +2,20 @@
 <?php
 define('EMAIL_DIR', __DIR__ . '/../tmp');
 
-$fd = fopen("php://stdin", "r");
-$email = "";
-while (!feof($fd)) {
-    $email .= fread($fd, 1024);
-}
-fclose($fd);
-
 if (!file_exists(EMAIL_DIR)) {
     mkdir(EMAIL_DIR, 0777, true);
 }
 
-$fileName = sprintf('%s/%s_%d_%s.eml', EMAIL_DIR, date('YmdHis'), time(), uniqid());
-file_put_contents($fileName, $email);
+$destinationFileName = sprintf('%s/%s_%s.eml', EMAIL_DIR, date('YmdHis'), uniqid());
+$outputFile = fopen($destinationFileName, 'wb');
+$stdin = fopen('php://stdin', 'rb');
+while (!feof($stdin)) {
+    fwrite($outputFile, fread($stdin, 1024));
+}
+fclose($stdin);
+fclose($outputFile);
 
 if (PHP_OS == 'Darwin') {
     // Exclude from Time Machine on macOS
-    exec('/usr/bin/xattr -w com.apple.metadata com_apple_backup_excludeItem ' . escapeshellarg($fileName));
+    exec('/usr/bin/xattr -w com.apple.metadata com_apple_backup_excludeItem ' . escapeshellarg($destinationFileName));
 }

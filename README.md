@@ -36,7 +36,7 @@ Configuration for the `AdditionalConfiguration.php` in CMS:
 
 ```php
 $GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport'] = 'sendmail';
-$GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport_sendmail_command'] = '/home/sozialinfo/bin/email2file -t -i';
+$GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport_sendmail_command'] = '/home/myproject/bin/email2file -t -i';
 ```
 
 If you use Posfix, you can follow the next section but it will add additional overhead. It is easier just to configure the system to use mail catcher directly. You cna also add `if` statements to do this only in the development environment (or add this confuration only to your [development context](https://usetypo3.com/application-context.html)).

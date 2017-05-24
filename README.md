@@ -4,6 +4,7 @@ This repository contains some of my useful scripts.
 
 ## Listing
 
+* [email2file](#emailtofile) - catches all emails and writes them to files instead of sending them to recipients
 * [hback](#hback) – what is the web server host name of the site?
 * [kcpass](#kcpass) – get the macOS keychain password in shell for the URL
 * [set-file-url](#set-file-url) – set "downloaded from" macOS metadata for a file
@@ -14,6 +15,45 @@ This repository contains some of my useful scripts.
 No warranty, no support, use at your own risk, feel free to copy, modify, distribute.
 
 ## Scripts
+
+### <a name="email2file"></a>email2file
+
+"All mail catcher".
+
+This script puts all sent emails to files. I use it from TYPO3 CMS and from Postfix.
+
+In both cases you need to put the file to the file system. Preferably the path to the script should not have spaces.
+
+**[!!!]** You need to check and possibly adjust `EMAIL_DIR` constant inside the script.
+
+On macOS captured emails will be excluded from the Time Machine backups. You can test mass mailing this way without adding many files to your backups.
+
+#### Using with TYPO3 CMS
+
+For TYPO3 CMS you can create a `bin/` directory inside the project and add the script there. Than the script will put all captured emails inside `tmp/` of the project (autocreated if necessary).
+
+Configuration for the `AdditionalConfiguration.php` in CMS:
+
+```php
+$GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport'] = 'sendmail';
+$GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport_sendmail_command'] = '/home/sozialinfo/bin/email2file -t -i';
+```
+
+If you use Posfix, you can follow the next section but it will add additional overhead. It is easier just to configure the system to use mail catcher directly. You cna also add `if` statements to do this only in the development environment (or add this confuration only to your [development context](https://usetypo3.com/application-context.html)).
+
+#### Using with Postfix
+
+Add the following to `master.cf`:
+
+```
+file_route unix -    n    n    -    -    pipe user=dmitry argv=/opt/local/bin/email2file
+```
+
+Add the following to `main.cf`:
+
+```
+default_transport = file_route
+```
 
 ### <a name="hback"></a>hback
 
